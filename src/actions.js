@@ -1,66 +1,69 @@
 import store from "./store";
 
-export const incrementScore = (index) => {
-	let date = new Date();
-	let day = date.getDate();
-	let month = date.getMonth()+1;
-	let year = date.getFullYear();
-	const cloneList = [...store.getState().players];
-	cloneList[index].score++;
-	cloneList[index].updated = `${month}/${day}/${year}`;
 
-	store.setState({
-		players: cloneList
-	})
-};
+export const guardarRespuesta = (value) => {
+    let res = [...store.getState().result];
+    let index = store.getState().cont;
+    let marcar = store.getState().marcar;
+    if (marcar) {
+        res[index] = value;
+        store.setState({
+            marcar: false,
+            result: res
+        })
+        let t = setTimeout(() => {
+            siguiente();
+            store.setState({
+                marcar: true
+            })
+        }, 100);
+    }
 
-export const decrementScore = (index) => {
-	let date = new Date();
-	let day = date.getDate();
-	let month = date.getMonth()+1;
-	let year = date.getFullYear();
-	const cloneList = [...store.getState().players];
-	cloneList[index].score--;
-	cloneList[index].updated = `${month}/${day}/${year}`;
 
-	store.setState({
-		players: cloneList
-	})
-};
-
-export const addPlayer = (name) => {
-
-	let date = new Date();
-	let day = date.getDate();
-	let month = date.getMonth()+1;
-	let year = date.getFullYear();
-
-	const addPlayerList = [...store.getState().players,   {
-		id : store.getState().players.length + 1,
-		name: name,
-		score: 0,
-		created: `${month}/${day}/${year}`
-	}];
-
-	store.setState({
-		players: addPlayerList
-	})
 }
 
-
-export const removePlayer = (index) => {
-	const addPlayerList =  store.getState().players.filter( (item, idx) => idx != index );
-
-	store.setState({
-		players: addPlayerList
-	})
+export const siguiente = () => {
+    let questions = [...store.getState().answer];
+    let cont = store.getState().cont;
+    if (cont === questions.length - 1) {
+        store.setState({
+            completo: true
+        });
+    }
+    cont++;
+    store.setState({
+        cont: cont
+    })
+}
+export const anterior = () => {
+    let questions = [...store.getState().answer];
+    let cont = store.getState().cont;
+    if (cont === questions.length) {
+        store.setState({
+            completo: false
+        });
+    }
+    cont--;
+    store.setState({
+        cont: cont
+    })
+}
+export const obtenerCorrectas = () => {
+    let questions = [...store.getState().answer];
+    let answers = [...store.getState().answer];
+    return answers.filter((item, index) => item == questions[index].answer).length;
+}
+export const compararRespuestas = () => {
+    store.setState({
+        comparate: true
+    });
 }
 
-
-export const selectPlayer = (index) => {
-
-
-	store.setState({
-		selectedPlayerIndex : index
-	})
+export const reiniciar = () => {
+    store.setState({
+        cont: 0,
+        comparate: false,
+        allcomplete: false,
+        result: []
+    });
 }
