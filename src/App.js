@@ -2,19 +2,19 @@ import React, {Component} from 'react';
 import { connect } from "redux-zero/react";
 import { Image } from 'react-bootstrap';
 import track from './image/track.svg';
-import { ProgressBar, CreateAnswer, ListChoise, Flechas, Redes } from "./components.js";
+import { ProgresoBar, CreateAnswer, ListChoise, Flechas, Redes } from "./components.js";
 import './App.css';
 
 const App = ({answer, cont, allcomplete, comparate, result }) => {
 	const answerActual = answer[cont];
 	return(
-		<div className='container'>
+		<div className="container">
 			<header>
 				{!allcomplete && <Image src={answerActual.image}/>}
 				{allcomplete && <Image src={track}/>}
 			</header>
-			<div className="box-content">
-				{!allcomplete && <ProgressBar result={result.length} answer={answer.length}/>}
+			<div className="content">
+				{!allcomplete && <ProgresoBar result={result.length} answer={answer.length}/>}
 				<div className="quiz">
 					{!allcomplete && <CreateAnswer question={answerActual} result={result} cont={cont}/>}
 					{allcomplete && <ListChoise comparate={comparate} result={result} answer={answer}/>}

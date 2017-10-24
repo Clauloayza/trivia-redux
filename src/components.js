@@ -23,7 +23,7 @@ export const Redes = () => {
     );
 }
 
-export const ProgressBar = ({ result, answer }) => {
+export const ProgresoBar = ({ result, answer }) => {
     return (
         <div id="progress">
             <div className="progress-label">
