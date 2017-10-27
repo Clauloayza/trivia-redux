@@ -43,5 +43,5 @@ const deepdive = [
     }
   ]
 
-ReactDOM.render(<App image={'image/' + image[0]} answer={answers[0]} opciones={opciones[0] } />, document.getElementById('root'));
+ReactDOM.render(<App deepdive={deepdive}/>, document.getElementById('root'));
 registerServiceWorker();
