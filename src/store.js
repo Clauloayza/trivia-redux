@@ -1,34 +1,38 @@
-import createStore from "redux-zero";
+import avion from './image/plane.svg';
+import barco from './image/bote.svg';
+import bicicleta from './image/bici.svg';
+import bus from './image/bus.svg';
+import carro from './image/car.svg';
 
-
-let PLAYERS = [
-	{
-		name: "Jim Hoskins",
-		score: 31,
-		id: 1,
-		created: '11/8/2016',
-		updated: '11/9/2016'
-	},
-	{
-		name: "Andree Hoskins",
-		score: 35,
-		id: 2,
-		created: '11/9/2016',
-		updated: '11/10/2016'
-	},
-	{
-		name: "Alena Hoskins",
-		score: 42,
-		id: 3,
-		created: '11/11/2016',
-		updated: '11/12/2016'
-	},
-];
-const initialState = {
-	players: PLAYERS,
-	selectedPlayerIndex: -1
-};
-
-const store = createStore(initialState);
-
-export default store;
+const deepdive = [
+    {
+      answer: 'Which is the oldest airline in the world?',
+      opciones: { A: 'Avianca', B: 'KLM', C: 'Qantas' },
+      result: 'KLM',
+      image: 'assets/image/plane.svg'
+    },
+    {
+      answer: 'Which is the largest port in the world?',
+      opciones: { A: 'Port of Shanghai', B: 'Port of Singapore', C: 'Port of Rotterdam' },
+      result: 'Port of Shanghai',
+      image: 'assets/image/bote.svg'
+    },
+    {
+      answer: 'What is the longest distance cycling backwards?',
+      opciones: { A: '89.30 km', B: '675.10 km', C: '337.60 km' },
+      result: '337.60 km',
+      image: 'assets/image/bici.svg'
+    },
+    {
+      answer: 'What is the highest speed ever reached by a school bus?',
+      opciones: { A: '590 km/h', B: '320 km/h', C: '245 km/h' },
+      result: '590 km/h',
+      image: 'assets/image/bus.svg'
+    },
+    {
+      answer: 'What is the longest car trip on one tank of gas?',
+      opciones: { A: '2617 km', B: '3568 km', C: '1732 km' },
+      result: '2617 km',
+      image: 'assets/image/car.svg'
+    }
+  ]
