@@ -40,7 +40,7 @@ const Opciones = ({ opciones, comparation }) => {
                 return (
                     <div className={comparation === value ? 'seleccionado' : ''}>
                         <button key={index} onClick={() => guardarRespuesta(value)}>
-                            <span className='letra'>{key}</span>{value}
+                            <span className='letra'>{key} - </span>{value}
                         </button>
                     </div>
                 );
