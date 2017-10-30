@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import truck from './image/track.svg'
 import { connect } from 'redux-zero/react'
-
+import { CrearPreguntas, ListarRespuestas, RedesSociales, Flechas, BarraProgreso } from './components.js';
 import logo from './logo.svg';
 import './App.css';
 
@@ -21,8 +21,13 @@ const App = ({deepdive,contar, complet,comparation,marcar,respuestas}) => {
           </div>
        
         <div id="quiz">
-          <img src={truck}/>
-          <p></p>
+        {!complet && <img src={preguntaActual.image} />}
+        {!complet && <img src={truck} />}
+          <p>{!complet && <CrearPreguntas preguntaActual={preguntaActual} respuestas={respuestas} contar={contar} />}
+        </p>
+        <ol>
+          {complet && <ListarRespuestas comparation={comparation} respuestas={respuestas} deepdive={deepdive} />}
+        </ol>
         </div>
       </div>
         <div id="flechas" className="text-center">
